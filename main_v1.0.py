@@ -85,6 +85,7 @@ wb1.close()
 wbnew.close()
 app.quit()
 
+print('------------------------------------------------')
 last_word = input('输入 e 退出；输入 v 访问源码：\n')
 
 if last_word == 'v':
