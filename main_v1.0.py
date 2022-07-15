@@ -17,6 +17,7 @@ time.sleep(1)
 root = tk.Tk()
 root.withdraw()
 Filepath = filedialog.askopenfilename()
+print(Filepath)
 
 app = xw.App(visible=False,add_book=False)
 app.display_alerts=False
@@ -30,6 +31,7 @@ print()
 end = input('请输入词汇结束行数：\n')
 print()
 num = input('请输入默写个数：\n')
+print()
 
 num_range = 'a' + start + ':a' + end
 words_range = 'b' + start + ':b' + end
@@ -69,6 +71,7 @@ time.sleep(1)
 root = tk.Tk()
 root.withdraw()
 Folderpath = filedialog.askdirectory()
+print(Folderpath + '/' + name)
 
 wb1.save()
 wbnew.save(Folderpath + '/' + name)
