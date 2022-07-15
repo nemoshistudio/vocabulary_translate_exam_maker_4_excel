@@ -7,9 +7,13 @@ import tkinter as tk
 from tkinter import filedialog
 import webbrowser
 
-print('')
-print('完美支持 xls/xlsx 文件')
+print('英语词汇默写生成器')
 print()
+print('by 西位Nemo')
+print()
+print('已完美支持 xls/xlsx 文件')
+print()
+print('------------------------------------------------')
 print('请选择文件')
 print()
 time.sleep(1)
