@@ -17,7 +17,8 @@ time.sleep(1)
 root = tk.Tk()
 root.withdraw()
 Filepath = filedialog.askopenfilename()
-print(Filepath)
+print('文件路径：' + Filepath)
+print()
 
 app = xw.App(visible=False,add_book=False)
 app.display_alerts=False
@@ -71,7 +72,8 @@ time.sleep(1)
 root = tk.Tk()
 root.withdraw()
 Folderpath = filedialog.askdirectory()
-print(Folderpath + '/' + name)
+print('保存路径：' + Folderpath + '/' + name)
+print()
 
 wb1.save()
 wbnew.save(Folderpath + '/' + name)
@@ -83,3 +85,4 @@ last_word = input('输入 e 退出；输入 v 访问源码：\n')
 
 if last_word == 'v':
     webbrowser.open('https://github.com/nemoshistudio/vocabulary_translate_exam_maker_4_excel')
+    
