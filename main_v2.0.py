@@ -6,6 +6,7 @@ import random
 import tkinter as tk
 from tkinter import filedialog
 import webbrowser
+import sys
 
 print('英语词汇默写生成器')
 print()
@@ -63,6 +64,7 @@ if mode == '1':
     shtnew.range('b1').value = '词汇'
     shtnew.range('c1').value = '释义'
     shtnew.range('z1').value = ticket
+    shtnew.range('z2').value = '答案'
 
     shtnew2 = wbnew2.sheets['Sheet1']
     shtnew2.range('a1').value = '原表格序号'
@@ -70,6 +72,7 @@ if mode == '1':
     shtnew2.range('c1').value = '释义'
     shtnew2.range('d1').value = '批改'
     shtnew2.range('z1').value = ticket
+    shtnew2.range('z2').value = '试卷'
     shtnew2.range('e1').value = '禁止在答题区域单元格外篡改数据，避免影响阅卷。'
 
 
@@ -143,11 +146,15 @@ if mode == '2':
         sht2 = wb2.sheets['Sheet1']
         sht3 = wb3.sheets['Sheet1']
 
-        if sht2.range('z1').value == sht3.range('z1').value:
+        if sht2.range('z1').value == sht3.range('z1').value and sht2.range('z2').value == '答案' and sht3.range('z2').value == '试卷':
             break
 
-        print('答案与试卷题目不符')
+        print('----------------------------------------------------')
+        print('答案 或 试卷不符')
         print()
+        print('文件错误，请重启程序')
+        time.sleep(10)
+        sys.exit(1)
 
 
     print('----------------------------------------------------')
@@ -155,6 +162,8 @@ if mode == '2':
     t0 = time.time()
 
     num = 1
+    rightnum = 0
+    wrongnum = 0
     while True:
         num = num + 1
 
@@ -166,16 +175,20 @@ if mode == '2':
 
         if answer == key:
             sht3.range('d' + str(num)).value = '正确'
-            print('Right')
+            rightnum =rightnum + 1
 
         if not answer == key:
             sht3.range('d' + str(num)).value = key
-            print('Wrong')
+            wrongnum = wrongnum + 1
 
         wb3.save()
 
+    print('----------------------------------------------------')
     print('阅卷完毕')
-    print('用时：' + str(time.time() - t0) + 's')
+    print('正确数：' + str(rightnum))
+    print('错误数：' + str(wrongnum))
+    print('正确率：' + str(rightnum / (rightnum + wrongnum)))
+    print('阅卷用时：' + str(time.time() - t0) + 's')
 
 
     wb3.save('已批改试卷.xlsx')
