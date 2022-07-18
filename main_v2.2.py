@@ -16,12 +16,6 @@ print('已完美支持 xls/xlsx 文件')
 print()
 
 
-#选择是否需要新手教程
-help_mode = input('如果需要帮助，输入 help 查看帮助，或输入任意字符跳过（目前仅出卷功能）：\n')
-
-if help_mode == 'help':
-    print('已进入帮助模式，每一步都将有详细的提示')
-
 
 #初始化表格处理函数
 app = xw.App(visible=False, add_book=False)
@@ -32,9 +26,6 @@ app.screen_updating = False
 #选择模式
 print('------------------------------------------------')
 print()
-if help_mode == 'help':
-    print('这一步将选择你要使用的功能，如果选错需要重启程序\n'
-          '注意：使用阅卷功能需要在电脑上规范答题')
 mode = input('出卷请输入 1 ，阅卷请输入 2 ：\n')
 print()
 print('------------------------------------------------')
@@ -42,14 +33,6 @@ print('------------------------------------------------')
 
 #出卷模式
 if mode == '1':
-    if help_mode == 'help':
-        print('你已经选择了 出卷 模式\n'
-              '接下来要选择词库文件\n'
-              '词库文件需要符合一定格式要求才可使用\n')
-        more_option = input('如需了解规格详情请输入 more 下载示例文件\n')
-        if more_option == 'more':
-            webbrowser.open('https://github.com/nemoshistudio/vocabulary_translate_exam_maker_4_excel')
-
 
     #选择词库
     print('请选择词库文件')
@@ -74,32 +57,27 @@ if mode == '1':
 
     #获取默写范围、数量等选项
     print('----------------------------------------------------')
-    if help_mode == 'help':
-        print('这一步要输入工作表名称，一般位于Excel窗口左下方，默认为Sheet1\n')
 
-    sheetname = input('请输入工作表名称（默认Sheet1）：\n')
+
+    sheetname = input('请输入工作表名称（一般位于Excel窗口左下方,默认为Sheet1）：\n')
     if sheetname == '':
         sheetname = 'Sheet1'
     print()
 
-    if help_mode == 'help':
-        print('这一步要输入默写范围的起始词行数，如示例文件中 able 位于 B5 ，则输入 5\n')
+
     start = input('请输入词汇起始行数：\n')
     print()
 
-    if help_mode == 'help':
-        print('这里选择了默写范围的最后一行\n')
+
     end = input('请输入词汇结束行数：\n'
                 'Tips:如一直到文件最后，可以在 C 列（第三列）末尾单元格输入 end，并在此处输入 end\n')
     print()
 
-    if help_mode == 'help':
-        print('这一步选择了你想要默写的数量\n')
+
     num = input('请输入默写个数：\n')
     print()
 
-    if help_mode == 'help':
-        print('这一步选择了是否保留序号，避免以序号为参照猜出首字母或更多\n')
+
     wantnum = input('请选择是否保留原表格序号，y 代表保留 ，n 代表 不保留(原表格第一列无序号也输入 n)：\n')
     print('----------------------------------------------------')
 
@@ -190,9 +168,6 @@ if mode == '1':
     #保存文件
     print('出题完毕')
     print()
-    if help_mode == 'help':
-        print('这一步将选择试卷与答案将保存于哪一个文件夹内\n')
-    print('请选择保存路径')
     print()
     time.sleep(1)
 
@@ -340,7 +315,7 @@ if mode == '2':
     app.quit()
 
 print('------------------------------------------------')
-last_word = input('输入 e 退出；输入 v 访问源码：\n')
+last_word = input('输入 e 退出；输入 v 访问网站检查更新：\n')
 
 if last_word == 'v':
     webbrowser.open('https://github.com/nemoshistudio/vocabulary_translate_exam_maker_4_excel')
