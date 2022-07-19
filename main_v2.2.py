@@ -56,9 +56,6 @@ if mode == '1':
 
 
     #获取默写范围、数量等选项
-    print('----------------------------------------------------')
-
-
     sheetname = input('请输入工作表名称（一般位于Excel窗口左下方,默认为Sheet1）：\n')
     if sheetname == '':
         sheetname = 'Sheet1'
@@ -84,6 +81,7 @@ if mode == '1':
 
     #打开工作表
     print('正在初始化默写词库与试卷')
+    print()
     sht1 = wb1.sheets[sheetname]
 
 
@@ -92,8 +90,9 @@ if mode == '1':
         endnum = 1
         while True:
 
-            if sht1.range('c' + str(endnum)).value == 'end':
+            if sht1.range('c' + str(endnum)).value == None and sht1.range('b' + str(endnum)).value == None:
                 break
+
 
             endnum = endnum + 1
 
@@ -107,7 +106,8 @@ if mode == '1':
 
 
     #将单元格数据输入到列表
-
+    print('正在读取词汇数据')
+    print()
     num_list = sht1.range(num_range).value
     words_list = sht1.range(words_range).value
     meanings_list = sht1.range(meanings_range).value
@@ -144,6 +144,7 @@ if mode == '1':
     num = int(num)
     sum = 0
     print('正在随机抽取词汇出题')
+    print()
     while sum < num:
         sum = sum + 1
         word_num = random.randint(0, len(words_list)-1)
@@ -168,10 +169,13 @@ if mode == '1':
     #保存文件
     print('出题完毕')
     print()
+    print('----------------------------------------------------')
     print()
     time.sleep(1)
 
-
+    print('请选择保存路径')
+    print()
+    time.sleep(1)
     #调出窗口获取保存路径
     root = tk.Tk()
     root.withdraw()
