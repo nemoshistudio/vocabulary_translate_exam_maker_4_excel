@@ -279,11 +279,11 @@ if mode == '2':
 
     #写入正常率
     num = num + 1
-    sht3.range('d' + str(num)).value = '正确数：' + rightnum
+    sht3.range('d' + str(num)).value = '正确数：' + str(rightnum)
     num = num + 1
-    sht3.range('d' + str(num)).value = '错误数：' + wrongnum
+    sht3.range('d' + str(num)).value = '错误数：' + str(wrongnum)
     num = num + 1
-    sht3.range('d' + str(num)).value = '正确率：' + accuracy
+    sht3.range('d' + str(num)).value = '正确率：' + str(accuracy)
 
 
 
@@ -296,7 +296,7 @@ if mode == '2':
     print()
     print('错误数：' + str(wrongnum))
     print()
-    print('正确率：' + str())
+    print('正确率：' + str(accuracy))
     print()
     print('阅卷用时：' + str(time.time() - t0) + 's')
     print()
